@@ -2,7 +2,7 @@
 const tableData = data;
 
 // Reference the HTML table using D3
-var tbody = df.select("tbody");
+var tbody = d3.select("tbody");
 
 // Create a function to build a table
 function buildTable(data) {
@@ -36,15 +36,15 @@ function handleClick() {
     if (date) {
         // Apply "filter" to the table data to only keep the rows where datetime value matches filter value
         filteredData = filteredData.filter(row => row.datetime === date);
-    };
+    }
 
     // Rebuild the table using the filtered data
     // If no date was entered, filteredData will be the original table
     buildTable(filteredData);
-};
+}
 
 // Attach an event to listen for the filter button
-d3.selectAll("sfilter-btn").on("click", handleClick);
+d3.selectAll("#filter-btn").on("click", handleClick);
 
 // Build the table when the page loads
 buildTable(tableData);
