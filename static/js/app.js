@@ -62,6 +62,11 @@ function updateFilters() {
     } else delete filters.shape;
 
 
+    console.log(data);
+
+    console.log(filters);
+
+
     // Call function to apply all filters and rebuild the table
     filterTable();
 }
@@ -75,11 +80,10 @@ function filterTable() {
     // Loop through all of the filters and keep any data that
     // matches the filter values
 
-    Object.keys(filters).forEach(([key, value]) => {
-        
-        filteredData = filteredData.filter(obj => obj.key === value)
-    }
-    )
+    Object.entries(filters).forEach(function ([key, value]) {
+        filteredData = filteredData.filter(row => row[key] === value);
+    });
+
 
     // Finally, rebuild the table using the filtered Data
     buildTable(filteredData);
